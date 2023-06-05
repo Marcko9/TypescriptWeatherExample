@@ -1,9 +1,19 @@
 // Style import
 import './styles/main.scss';
 
-// Import the API request method
+// TODO: Import the API request method
 import { buttonClick, getCity, updateInteface } from './dom-manipulation/domManipulation';
+import { getWeather, getWeatherPromises } from './networking/weather';
 
-// Add an event listener to the button
+// TODO: Create an async function to call the API method
+export const displayWeather = async () => {
+    const city = getCity();
+    if(city) {
+        const weather = await getWeather(city);
+        //const weather = await getWeatherPromises(city);
+        updateInteface(weather);
+    } 
+}
 
-// Create an async function to call the API method
+// TODO: Add an event listener to the button
+if (buttonClick) buttonClick.addEventListener('click', displayWeather);
